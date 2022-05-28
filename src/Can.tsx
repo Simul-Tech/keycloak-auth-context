@@ -27,7 +27,7 @@ const CanDebug: React.FunctionComponent<CanProps & CanCmpProps & {children?: Rea
         style={{
           background: "#000",
           position: "absolute",
-          opacity: "0.6",
+          opacity: "0.65",
           fontSize: "8px",
           fontWeight: "normal",
           color: "#fff",
