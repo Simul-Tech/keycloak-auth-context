@@ -14,19 +14,19 @@ jobs:
     name: Check for changes
     runs-on: ubuntu-latest
     outputs:
-      codegen: ${{ steps.filter.outputs.codegen }}
+      source: ${{ steps.filter.outputs.source }}
     steps:
       - uses: actions/checkout@v2
       - uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
-            codegen:
+            source:
               - 'src/**'
 
   build:
     needs: changes
-    if: ${{ needs.changes.outputs.codegen == 'true' }}
+    if: ${{ needs.changes.outputs.source == 'true' }}
 
     runs-on: ubuntu-latest
 
