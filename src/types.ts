@@ -1,0 +1,1 @@
+export type FCC<P> = React.FunctionComponent<P & {children?  : React.ReactNode}> 

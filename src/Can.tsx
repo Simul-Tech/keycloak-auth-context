@@ -1,16 +1,17 @@
 import React from "react";
 import { usePermission } from "./context";
+import { FCC } from "./types";
 
 type CanProps = { permissionIds: string[] };
 type CanCmpProps = { can: boolean };
 
-const CanProd: React.FunctionComponent<CanCmpProps & {children?: React.ReactNode}> = (props) => {
+const CanProd: FCC<CanCmpProps> = (props) => {
   const { can = false, children } = props;
 
   return can ? <div>{children}</div> : null;
 };
 
-const CanDebug: React.FunctionComponent<CanProps & CanCmpProps & {children?: React.ReactNode}> = (props) => {
+const CanDebug: FCC<CanProps & CanCmpProps> = (props) => {
   const { can = false, permissionIds = [], children } = props;
 
   return (
@@ -42,7 +43,7 @@ const CanDebug: React.FunctionComponent<CanProps & CanCmpProps & {children?: Rea
   );
 };
 
-const Can: React.FunctionComponent<CanProps & {children?: React.ReactNode}> = ({
+const Can: FCC<CanProps> = ({
   permissionIds,
   children
 }) => {

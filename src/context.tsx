@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import jwt_decode from "jwt-decode";
 import Logger from "./logger";
+import { FCC } from "./types";
 
 export interface IPermission {
   rsid: string;
@@ -39,10 +40,9 @@ const PermissionContext = React.createContext<{
   data: { logger?: Console; isDebug?: boolean };
 }>(null);
 
-export const PermissionProvider: React.FunctionComponent<{
+export const PermissionProvider: FCC<{
   permissionToken: string;
   isDebug: boolean;
-  children?: React.ReactNode
 }> = (props) => {
   const { permissionToken, isDebug, children } = props;
   const logger = Logger(isDebug);
