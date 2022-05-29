@@ -32,10 +32,10 @@ export const usePermission: UsePermissionType = (
 
   const can = React.useMemo(() => {
     const isTrue = permissionIds.every((perm) => permissionSet.has(perm));
-    if (!isTrue) {
+    if (!isTrue && options?.isDebug) {
       permissionIds
         .filter((perm) => !permissionSet.has(perm))
-        .forEach((perm) => options?.isDebug && console.warn("UNAUTHORIZED", perm));
+        .forEach((perm) => console.warn("UNAUTHORIZED", perm));
     }
 
     return isTrue;
