@@ -22,7 +22,7 @@ jobs:
         with:
           filters: |
             source:
-              - 'src/**'
+              - 'packages/authz/src/**'
 
   build:
     needs: changes
@@ -49,4 +49,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: yarn semantic-release
