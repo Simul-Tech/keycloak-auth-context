@@ -44,7 +44,7 @@ const CanDebug: FCC<CanProps & CanCmpProps> = (props) => {
 };
 
 const Can: FCC<CanProps> = ({
-  permissionIds,
+  permissionIds = [],
   children
 }) => {
   const [can, isDebug] = usePermission(permissionIds);
