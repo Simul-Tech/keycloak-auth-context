@@ -1,6 +1,6 @@
 import React from "react";
-import { usePermission } from "./context";
-import { FCC } from "./types";
+import { usePermission, usePermissionContext } from "../core/permission-context";
+import { FCC } from "../types";
 
 type CanProps = { permissionIds: string[] };
 type CanCmpProps = { can: boolean };
@@ -47,9 +47,10 @@ const Can: FCC<CanProps> = ({
   permissionIds = [],
   children
 }) => {
-  const [can, isDebug] = usePermission(permissionIds);
+  const { options } = usePermissionContext();
+  const can = usePermission(permissionIds);
 
-  return isDebug ? (
+  return options?.isDebug ? (
     <CanDebug can={can} permissionIds={permissionIds}>
       {children}
     </CanDebug>

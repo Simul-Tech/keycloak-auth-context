@@ -1,1 +1,2 @@
-export * from './context';
+export * from './core/permission-context';
+export * from './components';
