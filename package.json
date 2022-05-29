@@ -6,11 +6,11 @@
   "workspaces": [
     "packages/*"
   ],
-  "repository": "https://github.com/antoniodinovi/keycloak-auth-context",
+  "repository": "https://github.com/Simul-Tech/toolkit",
   "author": "antonio.dinovi@simultech.it",
   "license": "MIT",
   "devDependencies": {
-    "turbo": "^1.2.14"
+    "turbo": "1.2.14"
   },
   "scripts": {
     "build": "turbo run build",

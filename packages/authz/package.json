@@ -1,6 +1,7 @@
 {
   "name": "@4dd/authz",
   "version": "0.0.0-development",
+  "description": "",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "./dist/index.cjs",
@@ -9,6 +10,11 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**"
+  ],
+  "keywords": [
+    "react",
+    "keycloack",
+    "autorization"
   ],
   "scripts": {
     "build": "microbundle --jsx React.createElement",
