@@ -8,14 +8,15 @@
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",
+  "readme": "./dist/README.md",
   "files": [
     "dist/**",
     "README.md"
   ],
   "keywords": [
     "react",
-    "keycloack",
-    "autorization"
+    "keycloak",
+    "authorization"
   ],
   "scripts": {
     "build": "microbundle --jsx React.createElement",
