@@ -1,9 +1,7 @@
 import React from "react";
 import { usePermission, usePermissionContext } from "../core/permission-context";
-import { FCC } from "../types";
+import { CanCmpProps, CanProps, FCC } from "../types";
 
-type CanProps = { permissionIds: string[] };
-type CanCmpProps = { can: boolean };
 
 const CanProd: FCC<CanCmpProps> = (props) => {
   const { can = false, children } = props;

@@ -11,10 +11,14 @@ export interface IPermission {
     options: { isDebug?: boolean };
   }
 
-  export interface PermissionProviderProps {
+export interface PermissionProviderProps {
     permissionToken: string;
     isDebug? : boolean;
-  }
+}
 
 
-  export type UsePermissionType = (permissionIds: string[]) => boolean
+export type UsePermissionType = (permissionIds: string[]) => boolean
+
+
+export type CanProps = { permissionIds: string[] };
+export type CanCmpProps = { can: boolean };
