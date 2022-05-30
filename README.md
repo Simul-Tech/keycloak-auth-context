@@ -30,7 +30,7 @@ yarn add @4dd/authz
 
 #### Usage
 
-This tool works with a <strong>Keykloak</strong> Autorization token
+This tool works with a <strong>Keycloak</strong> Autorization token
 
 
 - Wrap the component of inside a Permission Provider
