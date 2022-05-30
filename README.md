@@ -7,7 +7,15 @@ This repository provides a set of tools and helpers for React applications
 
 ### AuthZ 
 
-AuthZ is a simple set of components to use with keycloak authorization token
+<a aria-label="NPM version" href="https://www.npmjs.com/package/@4dd/authz" target="_blank">
+   <img alt="" src="https://img.shields.io/npm/v/@4dd/authz.svg?style=for-the-badge&labelColor=000000">
+</a>
+  
+---
+> AuthZ is a simple set of components to use with keycloak authorization token
+
+  
+  
 
 #### Installation
 
