@@ -1,5 +1,5 @@
 # Simultech Toolkit
-----
+
 This repository provides a set of tools and helpers for React applications
 
 
