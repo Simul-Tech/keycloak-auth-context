@@ -22,7 +22,7 @@ jobs:
         with:
           filters: |
             source:
-              - 'packages/authz/**/*'
+              - 'packages/**/*'
 
   build:
     needs: changes
