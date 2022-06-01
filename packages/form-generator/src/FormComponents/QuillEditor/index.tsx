@@ -1,12 +1,11 @@
-import React, { FunctionComponent, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import React, {  useEffect } from 'react';
 import MUIFormControl from '@mui/material/FormControl';
 import MUIFormLabel from '@mui/material/FormLabel';
 import { styled, SxProps } from '@mui/material';
+import Quill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { FCC } from '../../FormGenerator/core/types';
 
-const Quill = dynamic(() => import('react-quill'), { ssr: false });
 
 const QuillEditorRoot = styled(Quill)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
