@@ -17,8 +17,6 @@ interface IDictionary<T, Q> {
     constructor(name: string) {
       this.items = {};
       this.name = name;
-  
-      //console.log("new dictionary", name);
     }
   
     private replace(str: string, params: { [key: string]: string }) {
