@@ -13,7 +13,8 @@
     "turbo": "1.2.14"
   },
   "scripts": {
-    "build": "turbo run build",
+    "build:authz": "turbo run build  --filter=@4dd/authz...",
+    "build:dictionary": "turbo run build  --filter=@4dd/dictionary...",
     "semantic-release": "turbo run semantic-release"
   }
 }
