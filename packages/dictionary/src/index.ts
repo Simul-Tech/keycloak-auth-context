@@ -49,7 +49,7 @@ interface IDictionary<T, Q> {
     ) {
       if (!this.items.hasOwnProperty(key)) {
         console.warn(`[${this.name}] Missing key ${String(key)}`);
-        return `😡 Missing Key : ${String(key)}`;
+        return `😡 Missing Key: ${String(key)}`;
       }
   
       if (params) {
