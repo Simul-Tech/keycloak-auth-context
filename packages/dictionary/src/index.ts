@@ -1,10 +1,10 @@
 interface IDictionary<T, Q> {
-    add<K1 extends keyof Exclude<T, '__typename'>, K2 extends keyof Q>(
+    add<K1 extends keyof T, K2 extends keyof Q>(
       name: K1 | K2,
       value: string
     ): IDictionary<T, Q>;
   
-    get<K1 extends keyof Exclude<T, '__typename'>, K2 extends keyof Q>(
+    get<K1 extends keyof T, K2 extends keyof Q>(
       key: K1 | K2,
       params?: { [key: string]: string }
     ): string;
@@ -35,7 +35,7 @@ interface IDictionary<T, Q> {
       return str;
     }
   
-    add<K1 extends keyof Exclude<T, '__typename'>, K2 extends keyof Q>(
+    add<K1 extends keyof T, K2 extends keyof Q>(
       name: K1 | K2,
       value: string
     ) {
@@ -43,7 +43,7 @@ interface IDictionary<T, Q> {
       return this;
     }
   
-    get<K1 extends keyof Exclude<T, '__typename'>, K2 extends keyof Q>(
+    get<K1 extends keyof T, K2 extends keyof Q>(
       key: K1 | K2,
       params?: { [key: string]: string }
     ) {
@@ -58,7 +58,7 @@ interface IDictionary<T, Q> {
       return this.items[key];
     }
   
-    getOrIgnore<K1 extends keyof Exclude<T, '__typename'>, K2 extends keyof Q>(
+    getOrIgnore<K1 extends keyof T, K2 extends keyof Q>(
       key: K1 | K2,
       params?: { [key: string]: string }
     ) {
@@ -70,7 +70,7 @@ interface IDictionary<T, Q> {
     }
   
     private replaceTranslations<
-      K1 extends keyof Exclude<T, '__typename'>,
+      K1 extends keyof T,
       K2 extends keyof Q
     >(key: K1 | K2, params?: { [key: string]: string }) {
       if (params) {
