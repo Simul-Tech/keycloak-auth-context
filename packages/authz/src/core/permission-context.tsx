@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-import { getPermissionSet } from "./utils";
 import { FCC, PermissionContextProps, PermissionProviderProps, UsePermissionType } from "../types";
-
+import { getPermissionSet } from "./utils";
 
 
 const PermissionContext = React.createContext<PermissionContextProps>(null);
