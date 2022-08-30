@@ -43,6 +43,7 @@ interface IDictionary<T, Q> {
     ) {
       this.items[name as any] = value;
       if(plural) this.items[`${PLURAL_KEY}${name as any}`] = plural
+
       return this;
     }
   
@@ -56,7 +57,7 @@ interface IDictionary<T, Q> {
         return `😡 Missing Key: ${String(key)}`;
       }
   
-      let _key = options.plural ? `${PLURAL_KEY}${key as string}` : key;
+      let _key = options?.plural ? `${PLURAL_KEY}${key as string}` : key;
 
       if (params) {
         return this.replace(this.items[_key], params);
