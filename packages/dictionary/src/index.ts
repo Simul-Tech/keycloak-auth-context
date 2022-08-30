@@ -1,4 +1,6 @@
 import parse from 'html-react-parser'
+const PLURAL_KEY = '__plural__';
+
 interface IDictionary<T, Q> {
     add<K1 extends keyof T, K2 extends keyof Q>(
       name: K1 | K2,
@@ -36,41 +38,39 @@ interface IDictionary<T, Q> {
   
     add<K1 extends keyof T, K2 extends keyof Q>(
       name: K1 | K2,
-      value: string
+      value: string,
+      plural?: string
     ) {
       this.items[name as any] = value;
+      if(plural) this.items[`${PLURAL_KEY}${name as any}`] = plural
       return this;
     }
   
     get<K1 extends keyof T, K2 extends keyof Q>(
       key: K1 | K2,
-      params?: { [key: string]: string }
+      params?: { [key: string]: string },
+      options?: { plural: boolean}
     ) {
       if (!this.items.hasOwnProperty(key)) {
         console.warn(`[${this.name}] Missing key ${String(key)}`);
         return `😡 Missing Key: ${String(key)}`;
       }
   
+      let _key = options.plural ? `${PLURAL_KEY}${key as string}` : key;
+
       if (params) {
-        return this.replace(this.items[key], params);
+        return this.replace(this.items[_key], params);
       }
-      return this.items[key];
+      return this.items[_key];
     }
 
 
     getHTML<K1 extends keyof T, K2 extends keyof Q>(
       key: K1 | K2,
-      params?: { [key: string]: string }
+      params?: { [key: string]: string },
+      options?: { plural: boolean}
     ) {
-      if (!this.items.hasOwnProperty(key)) {
-        console.warn(`[${this.name}] Missing key ${String(key)}`);
-        return `😡 Missing Key: ${String(key)}`;
-      }
-  
-      if (params) {
-        return parse(this.replace(this.items[key], params));
-      }
-      return parse(this.items[key]);
+      return parse(this.get(key, params, options))
     }
   
     getOrIgnore<K1 extends keyof T, K2 extends keyof Q>(
