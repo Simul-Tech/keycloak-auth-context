@@ -2,6 +2,9 @@ import parse from 'html-react-parser'
 const PLURAL_KEY = '__plural__';
 
 interface IDictionary<T, Q> {
+
+    init(values: T): void
+
     add<K1 extends keyof T, K2 extends keyof Q>(
       name: K1 | K2,
       value: string
@@ -21,7 +24,7 @@ interface IDictionary<T, Q> {
       this.items = {};
       this.name = name;
     }
-  
+
     private replace(str: string, params: { [key: string]: string }) {
       const re = new RegExp(
         Object.keys(params)
@@ -36,6 +39,10 @@ interface IDictionary<T, Q> {
       return str;
     }
   
+    init(values: T): void {
+      this.items = values; 
+    }
+
     add<K1 extends keyof T, K2 extends keyof Q>(
       name: K1 | K2,
       value: string,
@@ -95,4 +102,3 @@ interface IDictionary<T, Q> {
       return this.items[key];
     }
   }
-  
