@@ -1,6 +1,6 @@
 {
   "name": "@4dd/printer-lib",
-  "private": true,
+  "description": "",
   "version": "0.0.0",
   "source": "src/index.ts",
   "main": "./dist/index.cjs",
@@ -22,6 +22,7 @@
     "semantic-release": "semantic-release"    
   },
   "dependencies": {
+    "react": "18.2.0",
     "html-react-parser": "3.0.12",
     "next": "13.2.4",
     "node-fetch" : "3.3.1",
