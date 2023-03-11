@@ -10,12 +10,14 @@
   "author": "antonio.dinovi@simultech.it",
   "license": "MIT",
   "devDependencies": {
-    "turbo": "1.2.14"
+    "turbo": "1.8.3"
   },
   "scripts": {
     "build:authz": "turbo run build  --filter=@4dd/authz...",
     "build:dictionary": "turbo run build  --filter=@4dd/dictionary...",
+    "build:printer-lib": "turbo run build  --filter=@4dd/printer-lib...",
     "semantic-release:dictionary": "turbo run semantic-release --filter=@4dd/dictionary...",
-    "semantic-release:authz": "turbo run semantic-release --filter=@4dd/authz..."
+    "semantic-release:authz": "turbo run semantic-release --filter=@4dd/authz...",
+    "semantic-release:printer-lib": "turbo run semantic-release --filter=@4dd/printer-lib..."
   }
 }
