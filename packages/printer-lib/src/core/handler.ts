@@ -46,7 +46,7 @@ export const PDFHandler = ({ config }: { config: Config }) => {
       });
     }
 
-    const response = await fetch("http://localhost:3000/api/engine", {
+    const response = await fetch(config.renderUrl, {
       method: "POST",
       body: JSON.stringify({
         data: req.body,
