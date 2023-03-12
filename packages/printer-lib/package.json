@@ -39,6 +39,7 @@
 
   },
   "peerDependencies": {
+    "react": "18.2.0",
     "zod": "3.21.4",
     "next": "13.2.4"
 
