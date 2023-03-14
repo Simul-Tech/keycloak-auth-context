@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import fetch from "node-fetch";
 import stream from "stream";
 import { promisify } from "util";
 import { Config, Keys } from "./schemas";
