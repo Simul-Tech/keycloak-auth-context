@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
 import stream from "stream";
 import { promisify } from "util";
-import { getLogger } from "./logger";
 import { Config, Keys } from "./schemas";
 import { Utils } from "./utils";
 
@@ -11,14 +10,13 @@ export const PDFHandler = ({ config }: { config: Config }) => {
   const utils = new Utils(config);
 
   return async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const logger = getLogger("PDF Handler");
 
     const template_id = req.query?.template_id
       ? (req.query.template_id as Keys<typeof config>)
       : null;
 
     if (!template_id) {
-      logger.error("Template not defined");
+      console.log("Template not defined");
       return res.status(400).send({
         error: "template_id_undefined",
         message: `Template not defined`,
@@ -28,7 +26,7 @@ export const PDFHandler = ({ config }: { config: Config }) => {
     const currentSchema = utils.getConfig(template_id!);
 
     if (!currentSchema) {
-      logger.error(`Template ${template_id} not found`);
+      console.log(`Template ${template_id} not found`);
 
       return res.status(400).send({
         error: "template_not_found",
@@ -39,7 +37,7 @@ export const PDFHandler = ({ config }: { config: Config }) => {
     const validationResponse = currentSchema["schema"].safeParse(req.body);
 
     if (!validationResponse.success) {
-      logger.error(validationResponse.error);
+      console.log(validationResponse.error);
       return res.status(400).send({
         error: validationResponse.error,
         message: `Bad payload!`,
