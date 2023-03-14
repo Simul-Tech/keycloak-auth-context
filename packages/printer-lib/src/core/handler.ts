@@ -48,6 +48,7 @@ export const PDFHandler = ({ config }: { config: Config }) => {
 
     const response = await fetch(config.renderUrl, {
       method: "POST",
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         data: req.body,
         pdfOptions: config.pdfOptions,
