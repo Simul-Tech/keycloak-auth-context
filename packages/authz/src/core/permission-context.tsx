@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import {
   FCC,
   PermissionContextProps,
@@ -15,15 +15,22 @@ export const PermissionProvider: FCC<PermissionProviderProps> = (props) => {
   const { permissionToken, permissionPath, isDebug = false, children } = props;
 
   const permissionSet = React.useMemo(
-    () => getPermissionSet(permissionToken, permissionPath),
-    [permissionToken]
+    () => getPermissionSet(permissionToken, permissionPath, isDebug),
+    [permissionToken, permissionPath, isDebug]
   );
 
-  return (
-    <PermissionContext.Provider value={{ permissionSet, options: { isDebug } }}>
-      {children}
-    </PermissionContext.Provider>
+  const provider = useMemo(
+    () => (
+      <PermissionContext.Provider
+        value={{ permissionSet, options: { isDebug } }}
+      >
+        {children}
+      </PermissionContext.Provider>
+    ),
+    [permissionSet, isDebug]
   );
+
+  return provider;
 };
 
 export const usePermission: UsePermissionType = (permissionIds) => {
