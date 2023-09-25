@@ -13,6 +13,7 @@ export interface IPermission {
 
 export interface PermissionProviderProps {
     permissionToken: string;
+    permissionPath?: string;
     isDebug? : boolean;
 }
 

@@ -8,10 +8,10 @@ const PermissionContext = React.createContext<PermissionContextProps>(null);
 export const usePermissionContext = () => useContext(PermissionContext);
 
 export const PermissionProvider: FCC<PermissionProviderProps> = (props) => {
-  const { permissionToken, isDebug = false, children } = props;
+  const { permissionToken, permissionPath, isDebug = false, children } = props;
 
   const permissionSet = React.useMemo(
-    () => getPermissionSet(permissionToken),
+    () => getPermissionSet(permissionToken, permissionPath),
     [permissionToken]
   );
 

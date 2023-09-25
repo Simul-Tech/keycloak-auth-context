@@ -1,10 +1,12 @@
 import jwt_decode from "jwt-decode";
 import { IPermission } from "../types";
+import get from 'lodash.get';
 
 export const getPermissionSet: (
-    permissionToken: string
-  
-  ) => Set<string> = (permissionToken) => {
+    permissionToken: string,
+    permissionPath?: string
+
+  ) => Set<string> = (permissionToken, permissionPath = "authorization.permissions") => {
     if (!permissionToken) {
       console?.warn("Permission token not found, return empty set");
       return new Set();
@@ -15,8 +17,11 @@ export const getPermissionSet: (
         authorization: { permissions: IPermission[] };
       }>(permissionToken);
   
+
+      const permissions = get(decoded, permissionPath) || []
+
       const permissionSet = new Set<string>(
-        decoded?.authorization?.permissions?.map(
+        permissions?.map(
           (perm: { rsname: string }) => perm.rsname
         )
       );
