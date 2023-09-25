@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
-import { FCC, PermissionContextProps, PermissionProviderProps, UsePermissionType } from "../types";
+import {
+  FCC,
+  PermissionContextProps,
+  PermissionProviderProps,
+  UsePermissionType,
+} from "../types";
 import { getPermissionSet } from "./utils";
-
 
 const PermissionContext = React.createContext<PermissionContextProps>(null);
 
@@ -16,17 +20,13 @@ export const PermissionProvider: FCC<PermissionProviderProps> = (props) => {
   );
 
   return (
-    <PermissionContext.Provider
-      value={{ permissionSet, options: {  isDebug } }}
-    >
+    <PermissionContext.Provider value={{ permissionSet, options: { isDebug } }}>
       {children}
     </PermissionContext.Provider>
   );
 };
 
-export const usePermission: UsePermissionType = (
-  permissionIds
-) => {
+export const usePermission: UsePermissionType = (permissionIds) => {
   const { permissionSet, options } = usePermissionContext();
 
   const can = React.useMemo(() => {
