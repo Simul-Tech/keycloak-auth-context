@@ -45,15 +45,32 @@ export const PermissionProvider: FCC<PermissionProviderProps> = (props) => {
   return provider;
 };
 
-export const usePermission: UsePermissionType = (permissionIds) => {
+export const usePermission: UsePermissionType = ({
+  permissionIds = [],
+  evaluationMode = "AND",
+}) => {
   const { permissionSet, options } = usePermissionContext();
 
   const can = React.useMemo(() => {
-    const isTrue = permissionIds.every((perm) => permissionSet.has(perm));
-    if (!isTrue && options?.isDebug) {
-      permissionIds
-        .filter((perm) => !permissionSet.has(perm))
-        .forEach((perm) => console.warn("UNAUTHORIZED", perm));
+    let isTrue = false;
+
+    switch (evaluationMode) {
+      case "OR":
+        isTrue = permissionIds.some((perm) => permissionSet.has(perm));
+        if (!isTrue && options?.isDebug) {
+          console.log(permissionIds, permissionSet);
+        }
+        break;
+
+      case "AND":
+      default:
+        isTrue = permissionIds.every((perm) => permissionSet.has(perm));
+        if (!isTrue && options?.isDebug) {
+          permissionIds
+            .filter((perm) => !permissionSet.has(perm))
+            .forEach((perm) => console.warn("UNAUTHORIZED", perm));
+        }
+        break;
     }
 
     return isTrue;

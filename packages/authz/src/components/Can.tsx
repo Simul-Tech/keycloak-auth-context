@@ -1,7 +1,9 @@
 import React from "react";
 import { CanCmpProps, CanProps, FCC } from "../types";
-import { usePermission, usePermissionContext } from "../core/permission-context";
-
+import {
+  usePermission,
+  usePermissionContext,
+} from "../core/permission-context";
 
 const CanProd: FCC<CanCmpProps> = (props) => {
   const { can = false, children } = props;
@@ -17,7 +19,7 @@ const CanDebug: FCC<CanProps & CanCmpProps> = (props) => {
         position: "relative",
         borderStyle: "solid",
         borderWidth: "1px",
-        borderColor: can ? "green" : "red"
+        borderColor: can ? "green" : "red",
       }}
     >
       <small
@@ -30,7 +32,7 @@ const CanDebug: FCC<CanProps & CanCmpProps> = (props) => {
           color: "#fff",
           textTransform: "uppercase",
           top: 0,
-          right: 0
+          right: 0,
         }}
       >
         {permissionIds.join(",")}
@@ -42,13 +44,18 @@ const CanDebug: FCC<CanProps & CanCmpProps> = (props) => {
 
 const Can: FCC<CanProps> = ({
   permissionIds = [],
-  children
+  evaluationMode = "AND",
+  children,
 }) => {
   const { options } = usePermissionContext();
-  const can = usePermission(permissionIds);
+  const can = usePermission({ permissionIds, evaluationMode });
 
   return options?.isDebug ? (
-    <CanDebug can={can} permissionIds={permissionIds}>
+    <CanDebug
+      can={can}
+      permissionIds={permissionIds}
+      evaluationMode={evaluationMode}
+    >
       {children}
     </CanDebug>
   ) : (

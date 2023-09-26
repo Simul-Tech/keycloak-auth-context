@@ -16,10 +16,14 @@ export interface PermissionProviderProps {
   permissionToken: string;
   permissionPath?: string;
   permissionMapping?: (perm?: any) => string;
+  evaluationMode?: "AND" | "OR";
   isDebug?: boolean;
 }
 
-export type UsePermissionType = (permissionIds: string[]) => boolean;
+export type UsePermissionType = (args: {
+  permissionIds: string[];
+  evaluationMode: "AND" | "OR";
+}) => boolean;
 
-export type CanProps = { permissionIds: string[] };
+export type CanProps = Parameters<UsePermissionType>[0];
 export type CanCmpProps = { can: boolean };
