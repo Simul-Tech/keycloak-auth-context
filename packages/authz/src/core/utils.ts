@@ -1,4 +1,4 @@
-import jwt_decode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import get from "lodash.get";
 import { PermissionProviderProps } from "../types";
 
@@ -16,7 +16,7 @@ export const getPermissionSet: (
   }
 
   try {
-    const decoded = jwt_decode(permissionToken);
+    const decoded = jwtDecode(permissionToken);
 
     const permissionSet = new Set<string>(
       (get(decoded, permissionPath) || [])?.map(permissionMapping)
