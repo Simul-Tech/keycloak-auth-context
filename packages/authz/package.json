@@ -47,5 +47,8 @@
     "branches": [
       "main"
     ]
+  },
+  "engines" : { 
+    "node" : ">=20.0.0"
   }
 }
