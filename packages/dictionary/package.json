@@ -27,13 +27,13 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "html-react-parser": "3.0.4"
+    "html-react-parser": "5.1.18"
   },
   "devDependencies": {
     "microbundle": "0.15.1",
-    "rimraf": "3.0.2",
-    "typescript": "4.8.2",
-    "semantic-release": "19.0.5"
+    "rimraf": "6.0.1",
+    "typescript": "5.6.3",
+    "semantic-release": "24.1.3"
   },
   "repository": {
     "type": "git",
