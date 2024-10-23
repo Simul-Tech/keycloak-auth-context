@@ -1,1 +1,1 @@
-# AuthZ
+# Authz
