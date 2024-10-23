@@ -1,6 +1,6 @@
 {
   "name": "@4dd/authz",
-  "version": "0.0.0-development",
+  "version": "1.8.1",
   "description": "This tool works with a Keycloak Autorization token",
   "license": "MIT",
   "source": "src/index.ts",
@@ -48,7 +48,7 @@
       "main"
     ]
   },
-  "engines" : { 
-    "node" : ">=20.0.0"
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
